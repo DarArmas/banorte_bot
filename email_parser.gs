@@ -10,21 +10,40 @@ function searchBanorteEmails() {
     const messages = thread.getMessages();
 
     messages.forEach((message, j) => {
+      const subject = message.getSubject();
       const body = message.getBody();
-      const { purchase, amount, date } = parseBanorteEmail(body);
 
       Logger.log('--- Thread ' + i + ' | Email ' + j + ' ---');
-      Logger.log('Purchase: ' + purchase);
-      Logger.log('Amount: ' + amount);
-      Logger.log('Date: ' + date);
+      Logger.log('Subject: ' + subject);
+
+      const result = dispatchEmail(subject, body);
+
+      if (result) {
+        Logger.log('Purchase: ' + result.purchase);
+        Logger.log('Amount: ' + result.amount);
+        Logger.log('Date: ' + result.date);
+      }
     });
 
-    // Move thread to completed
     thread.removeLabel(labelPending);
     thread.addLabel(labelCompleted);
-    Logger.log('✅ Thread ' + i + ' moved to bot_banorte_completed');
   });
 }
+
+function dispatchEmail(subject, body) {
+  if (subject.includes('Compra en Comercio')) {
+    return parsePurchaseEmail(body);
+  }
+
+  // Future flavors 👇
+  // if (subject.includes('Transferencia')) {
+  //   return parseTransferEmail(body);
+  // }
+
+  Logger.log('⚠️ Unknown email type: ' + subject);
+  return null;
+}
+
 const MONTHS = {
   ene: '01', feb: '02', mar: '03', abr: '04',
   may: '05', jun: '06', jul: '07', ago: '08',
@@ -47,7 +66,7 @@ function extractTdText(html) {
   return matches.map(m => m[1].replace(/<[^>]+>/g, '').trim());
 }
 
-function parseBanorteEmail(bodyHtml) {
+function parsePurchaseEmail(bodyHtml) {
   const tds = extractTdText(bodyHtml);
 
   let purchase = null;
