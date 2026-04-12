@@ -3,6 +3,9 @@ function searchBanorteEmails() {
 
   Logger.log('Threads found: ' + threads.length);
 
+  const labelPending = GmailApp.getUserLabelByName('bot_banorte_pending');
+  const labelCompleted = GmailApp.getUserLabelByName('bot_banorte_completed');
+
   threads.forEach((thread, i) => {
     const messages = thread.getMessages();
 
@@ -15,9 +18,13 @@ function searchBanorteEmails() {
       Logger.log('Amount: ' + amount);
       Logger.log('Date: ' + date);
     });
+
+    // Move thread to completed
+    thread.removeLabel(labelPending);
+    thread.addLabel(labelCompleted);
+    Logger.log('✅ Thread ' + i + ' moved to bot_banorte_completed');
   });
 }
-
 const MONTHS = {
   ene: '01', feb: '02', mar: '03', abr: '04',
   may: '05', jun: '06', jul: '07', ago: '08',
