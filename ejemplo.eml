@@ -1,0 +1,212 @@
+Delivered-To: darnellsanchez2011@gmail.com
+Received: by 2002:a05:6022:929f:b0:f3:b36a:d319 with SMTP id dc31csp531168lab;
+        Sat, 11 Apr 2026 19:08:23 -0700 (PDT)
+X-Received: by 2002:a05:6871:342a:b0:417:2d6d:b7ad with SMTP id 586e51a60fabf-423e10c18eemr4701423fac.21.1775959703393;
+        Sat, 11 Apr 2026 19:08:23 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1775959703; cv=none;
+        d=google.com; s=arc-20240605;
+        b=D5RAm3KvMBopD2t6WThaJjg5CnU+yoQKr3lTj2114H6VlUXr4Ao03LBj4OJ21Ydube
+         JDc2KJqvD8fqIP6ubeek++ijYAc5xn/9eeYZf2Fm6Lry82MsrZJlLzNFzHK8xTWWCJTW
+         TDZCtBQl41AVnGXzVCljzmGebzKNwS/JQAdVq5xm155FR3M4KW2YJsdnlZDeLXDAFCDu
+         XUJ9yY7U8OOXjeMaKD57EtAuda6mdLa2vDoOpAnWjIrgTRrmcEdzGVyXAi+tcmWxyI9c
+         l0MONw5jJLZiOmJKjYqXIZO6rqrbJLR0HwRxe5LOfcgv0XJYMKYo34RaMpe5IZVhNaxo
+         WhhA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=message-id:date:mime-version:subject:to:from:x_spoof_exception
+         :dkim-signature;
+        bh=GTKhGSE0fx4R0EL/Zdv8Yst+mZKBHrH7/uhfrmhdMD8=;
+        fh=K6glWtvDac5yGOVwvPhqVsRQDGQUQHdkQedMrS8G2fU=;
+        b=HD2AEB//bh0Jd8GG/6FPeRSLprGxDdblLRuKMHZdw/0wBvZ8VQo9uCVxsMrMWBK8uT
+         FttHn9ufc6IxltSq+k+EqUvvmMWILbugau3ELAFLnrzSle6Bc4lKcNAok1zi/RkqUTzz
+         uhsK7eE6V9LvSH2kUHBHCvDLp2qOeuXXhv155eZEZ9j9+DyWxumxRn/9dCYopKqu7lRx
+         rHDya90HGxzFyjLiVhrUudROgwEreLVNG7fcSz5E3ZibKFCDs7NYd93RPL78sah79z9L
+         UgsRiSAHMNCjKcoqMDAqQCw/5sXJLCCBGqurjmOF2OBXXU4XbQVUcJLaN1NIOzDkNbaY
+         IGYw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@banorte.com header.s=banorte header.b="eN/28wy0";
+       spf=pass (google.com: domain of prvs=55583ec93=notificacionesbanorte@banorte.com designates 192.100.234.43 as permitted sender) smtp.mailfrom="prvs=55583ec93=notificacionesbanorte@banorte.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=banorte.com
+Return-Path: <prvs=55583ec93=notificacionesbanorte@banorte.com>
+Received: from cdf26.gfnorte.com.mx (cdf26.gfnorte.com.mx. [192.100.234.43])
+        by mx.google.com with ESMTPS id 586e51a60fabf-423ddd3f18dsi6016733fac.249.2026.04.11.19.08.22
+        for <DARNELLSANCHEZ2011@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Sat, 11 Apr 2026 19:08:23 -0700 (PDT)
+Received-SPF: pass (google.com: domain of prvs=55583ec93=notificacionesbanorte@banorte.com designates 192.100.234.43 as permitted sender) client-ip=192.100.234.43;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@banorte.com header.s=banorte header.b="eN/28wy0";
+       spf=pass (google.com: domain of prvs=55583ec93=notificacionesbanorte@banorte.com designates 192.100.234.43 as permitted sender) smtp.mailfrom="prvs=55583ec93=notificacionesbanorte@banorte.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=banorte.com
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=banorte.com; i=@banorte.com; q=dns/txt; s=banorte;
+  t=1775959703; x=1807495703;
+  h=from:to:subject:mime-version:date:message-id;
+  bh=dfuPwG3ekAO0MC1OgJZ1UNKySRaotW224670Zi7aK5Q=;
+  b=eN/28wy044T7QD7GiNJHEJGbDh+3Y8ubFpaFI/FSWMBJEfFddzfZvBHj
+   yMJwtLgsga8sqGzEo1Koz8o4tOiHbKhWjd46+OywAWNWbrqTjOJaGsKXi
+   aaGeJeVfaJQSgaLgZHwJM1kqE+tLlZyL+ERWkwLltUJO4KiRk2dglkuJ4
+   U=;
+X-CSE-ConnectionGUID: iWswWaMPTjGPYcPv40pFdA==
+X-CSE-MsgGUID: bePYSc2mRWeQ5Unsbl26Ww==
+X_Spoof_Exception: True
+Received: from NODE51.CENTRAL.BANORTE.COM (NODE51)
+  by TCP51F.CENTRAL.BANORTE.COM (BCER [15.150.10.60])
+  for <IOA51@NODE51>  with ESMTP (IBM SMTP51C z/OS V02R05.00)
+  Id APBG5174.J0066933.TCP51F.20260411.200810.231332.111.845@CENTRAL.BANORTE.COM ;
+ Sat, 11 Apr 2026 20:08:37 -0600
+From: "Notificaciones Banorte"<notificacionesbanorte@banorte.com>
+To:<DARNELLSANCHEZ2011@GMAIL.COM>
+Subject: Notificacion de Compra en Comercio
+Mime-Version: 1.0
+Content-Type:multipart/mixed; boundary="simple boundary"
+Date: Sat, 11 Apr 2026 20:08:37 -0600
+Message-ID: <APBG5174.J0066933.TCP51F.20260411.200810.231332.111.845@CENTRAL.BANORTE.COM>
+
+PROLOGUE - IGNORED
+
+--simple boundary
+Content-type: text/html; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<html>
+<head>
+<style type="text/css">
+<!--
+.dTablaf {position:relative; border-top:solid 1px CCC;
+ border-bottom:dashed 1px CCC; padding:10px 0 15px 0;
+ margin-bottom:10px}
+.dTablaf select {background:url(../images/bg_input.jpg)
+ border-top:solid 1px  666; border-bottom:solid 1px  CCC;
+ border-right:none; font-size:11px; line-height:13px;
+ font-family: Verdana, Arial, Helvetica, sans-serif;}
+.dTablaf td {font-size:12px; padding:6px 0 7px 5px;
+ color: 000; line-height:14px; font-family:Verdana, Arial}
+.dTablaf td a{color: 000}
+-->
+</style>
+</head>
+<body>
+<table border="0" cellpadding="0" cellspacing="0"
+ style="width: 800px">
+<tr>
+<td colspan="3" />
+</tr>
+</table>
+<table class="dTablaf" border="0" cellpadding="0"
+ cellspacing="0" style="width:800px">
+<tr>
+<td colspan="3" />
+</tr>
+<tr>
+<td colspan="3">
+<span style="font-family: arial"><br />Le notificamos que se ha       registrado
+ un cargo a su cuenta
+************0647
+, los datos de la operacion son los siguientes:</span>
+</td>
+</tr>
+<tr>
+<td width="34%" align="right" nowrap="nowrap">                Operacion:
+                    </td><td align="left" nowrap="nowrap">
+COMPRA EN ORIENTAL GRILL II
+</td>
+</tr>
+<tr>
+<td align="right" nowrap="nowrap">                Fecha y hora de la operacion:
+</td><td nowrap="nowrap">
+11/Abr      20:06:52  hrs.
+</td>
+</tr>
+<tr>
+<td align="right" nowrap="nowrap">                Fecha de Aplicacion:
+</td><td nowrap="nowrap">
+13/Abr/2026
+</td>
+</tr>
+<tr>
+<td align="right" nowrap="nowrap">                Cuenta destino:
+</td><td nowrap="nowrap">
+</td>
+</tr>
+<tr>
+<td align="right" nowrap="nowrap"> Importe:</td><td nowrap="nowrap">
+$           984.50 MN
+</td>
+</tr>
+<tr>
+<td align="right" nowrap="nowrap">Movimiento en su cuenta/autorizacion:
+</td><td nowrap="nowrap">
+001976
+</td>
+</tr>
+<tr>
+<td align="right" nowrap="nowrap">         Canal de operacion:
+</td><td nowrap="nowrap">
+TPV(COMPRA COMERCIO)
+</td>
+</tr>
+<tr><td colspan="3" /></tr>
+<tr><td colspan="3" /></tr>
+<tr><td colspan="3" /></tr>
+<tr><td align="center" colspan="2"><span>
+"Si su compra fue en restaurant, puede
+recibir 2 notificaciones debido al cierre
+ de la cuenta (propina); si el dato en
+"Movimiento en su cuenta/Autorizacion"
+es el mismo, considere unicamente la
+ultima notificacion"</span></td></tr>
+<tr>
+<td colspan="3"><span>Notas:</span><ul><li><span>Duda o aclaraciones
+correspondientes con la operacion informada en su notificacion comuniquese a:
+<br><br><table border="0" cellpadding="0"  cellspacing="0"  style="width:800px">
+<TR><TD noWrap align=center width="05%"></TD><TD noWrap align=center
+width="35%">   BANORTEL</TD><TD noWrap align=center width="35%">   LINEA DIRECTA
+</TD><TD noWrap align=center width="25%"></TD></TR><TR><TD noWrap  align=center
+width="05%"></TD><TD noWrap align=left width="35%">                        CDMX
+: 5140-5600</TD><TD noWrap align=left width="35%">                         CDMX
+: 5140-5640</TD><TD noWrap align=center width="25%"></TD></TR><TR> <TD noWrap
+align=center width="05%"></TD><TD noWrap align=left width="35%">     Monterrey :
+ 8156-9600</TD><TD noWrap align=left width="35%">                    Monterrey :
+ 8156-9640</TD><TD noWrap align=center width="25%"></TD></TR><TR>    <TD noWrap
+align=center width="05%"></TD><TD noWrap align=left width="35%">   Guadalajara :
+ 3669-9000</TD><TD noWrap align=left width="35%">                 Guadalajara :
+3669-9040</TD><TD noWrap align=center width="25%"></TD></TR><TR>  <TD noWrap
+align=center width="05%"></TD><TD noWrap align=left width="35%">     Resto del
+Pais : 01-800-BANORTE</TD><TD noWrap align=left width="35%">Resto del Pais : 01-
+800-DIRECTA </TD><TD noWrap align=center width="25%"></TD></TR><TR>  <TD noWrap
+align=center width="05%"></TD><TD noWrap align=center width="35%">
+(01800 - 226-6783)</TD><TD noWrap align=center width="35%">(01800 - 347-3282)
+<br><br></TD><TD noWrap align=center width="25%"></TD></TR><TR><TD noWrap
+align=center width="05%"></TD><TD noWrap align=center width="35%">Estos
+telefonos solo aplican para<br>las Personas Fisicas.<br><br><br></TD><TD noWrap
+align=center width="35%">Estos telefonos solo aplican para las<br>Personas
+Fisicas con actividad <br>Empresarial y Personas Morales.<br><br></TD><TD noWrap
+ align=center width="25%"></TD></TR></table></span></li><li><span>La fecha y
+hora de este mensaje ("Enviado el") podra variar respecto a la fecha/hora real
+de <br><br> operacion de su transaccion ("Fecha y  Hora de  Operacion"). Esto
+dependera de la<br><br>configuracion de sus servicios de correo y/o computadora
+en cuanto a su zona horaria.<br></span></li></ul>
+</tr>
+</table>
+<tr>
+<td><p><span style='font-size:8.0pt;font-family:Arial;color:black'><br>Este
+correo electronico es confidencial y/o puede contener informacion privilegiada.
+<br>Si usted no es su destinatario o no es alguna persona autorizada por este
+para recibir sus correos electronicos, NO debera usted utilizar, copiar, revelar
+, o tomar ninguna accion basada en este correo electronico o cualquier  otra
+informacion incluida en el, favor de notificar al remitente de inmediato
+mediante el reenvio de este correo electronico y borrar a continuacion
+totalmente este correo electronico y sus anexos.<br> Nota: Los acentos y
+caracteres especiales fueron omitidos para su correcta lectura en cualquier
+medio electronico.</span></p><p>
+<span style='font-size:8.0pt;font-family:Arial;color:black'>This e-mail is
+confidential and/or may contain privileged information.<br>If you are not the
+addressee or authorized to receive this for the addressee, you must not use,
+copy, disclose, or take any action based on this message or any other
+information here in, please advise the sender immediately by reply this e-mail
+ and delete this e-mail and its attachments.</span></p></td>
+</tr>
+</table>
+</body>
+</html>
