@@ -64,6 +64,11 @@ function parseTransferEmail(bodyHtml) {
 
     if (label === 'operacion:') {
       purchase = value.trim();
+       // Ignore incoming transfers
+      if (purchase.includes('TRASPASO')) {
+        Logger.log('⏭️ Skipping incoming transfer: ' + purchase);
+        return null;
+      }
     }
 
     if (label.includes('importe')) {
