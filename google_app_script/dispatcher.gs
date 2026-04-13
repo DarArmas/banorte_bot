@@ -3,10 +3,9 @@ function dispatchEmail(subject, body) {
     return parsePurchaseEmail(body);
   }
 
-  // Future flavors 👇
-  // if (subject.includes('Transferencia')) {
-  //   return parseTransferEmail(body);
-  // }
+  if (subject.includes('Notificaciones Eventos por Cuenta')) {
+    return parseTransferEmail(body);
+  }
 
   Logger.log('⚠️ Unknown email type: ' + subject);
   return null;
