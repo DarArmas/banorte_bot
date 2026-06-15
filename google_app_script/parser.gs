@@ -65,7 +65,7 @@ function parseTransferEmail(bodyHtml) {
     if (label === 'operacion:') {
       purchase = value.trim();
        // Ignore incoming transfers
-      if (purchase.includes('TRASPASO')) {
+      if (purchase.includes('TRASPASO') || purchase.includes('DEPOSITO') || purchase.includes('NOMINA')) {
         Logger.log('⏭️ Skipping incoming transfer: ' + purchase);
         return null;
       }
